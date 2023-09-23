@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./tailwind.css">
+
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body class="bg-Darkslategrey">
+
+  <div>
+    <div class="md:w-[65%] h-[50%] bg-white shadow-md shadow-slate-600 rounded-2xl mx-auto 
+    md:mt-3 flex md:flex-row flex-col-reverse justify-between md:p-4 min-w-[25rem] max-w-[50rem]" id="Newsletter">
+      <div class="md:w-[50%] w-[99%] md:text-[13px] px-7 md:py-16 py-10">
+        <h1 class="text-4xl text-Darkslategrey font-bold">Stay Updated!</h1>
+        <p class="mt-2">Join 60,000+ product managers receiving monthly updates on:</p>
+        <div class="flex my-4 justify-left space-x-3">
+          <img src="./assets/images/icon-list.svg" alt="">
+          <p>Product discovery and building what matters</p>
+        </div>
+        <div class="flex my-4 justify-left space-x-3">
+          <img src="./assets/images/icon-list.svg" alt="">
+          <p>Measuring to ensure updates are a success</p>
+        </div>
+        <div class="flex my-4 justify-left space-x-3">
+          <img src="./assets/images/icon-list.svg" alt="">
+          <p>And much more!</p>
+        </div>
+        <label for="emailaddress"
+          class="flex flex-col text-Charcoalgrey font-semibold text-sm border-none outline-none pt-5">
+          <p class="flex justify-between">Email address<span class="text-Tomato hidden" id="errorMessage">Valid
+              Email
+              required</span>
+          </p>
+          <input type="email" name="email" id="email" placeholder="email@company.com" class="border
+           border-Darkslategrey p-2 text-Darkslategrey text-[15px] rounded-lg outline-none 
+           cursor-pointer my-[0.3rem]" required>
+        </label>
+        <div class="md:mt-2 mt-5 bg-Darkslategrey rounded-lg text-center text-White p-2 
+     cursor-pointer hover:bg-gradient-to-r from-Tomato to-red-400 hover:shadow-md hover:shadow-Tomato
+      hover:text-slate-50">
+          <button type="submit" onclick="validateEmail()">Subscribe to monthly newsletter</button>
+        </div>
+      </div>
+      <img src="./assets/images/illustration-sign-up-desktop.svg" alt="" class="object-cover w-1/2 md:block hidden">
+      <img src="./assets/images/illustration-sign-up-mobile.svg" alt="" class="md:hidden block w-full object-contain">
+    </div>
+  </div>
+
+
+  <div class="bg-white rounded-2xl text-Darkslategrey md:w-[30%] hidden 
+  md:p-10 px-10 pt-16 mx-auto md:mt-40 mt-0 h-screen md:h-auto text-sm" id="success">
+    <img src="./assets/images/icon-success.svg" alt="" class="mb-5">
+    <h1 class=" font-bold text-4xl py-2 text-left">Thanks for subscribing!</h1>
+    <p class="my-5 w-[95%]">A confirmation email has been sent to <span class="font-bold"
+        id="notify">ash@loremcompany.com.</span>
+      Please open it and click the button inside to confirm your subscription.</p>
+    <div class=" bg-Darkslategrey rounded-lg text-center text-White p-2 
+     cursor-pointer hover:bg-gradient-to-r from-Tomato to-red-400 hover:shadow-md hover:shadow-Tomato
+      hover:text-slate-300 md:mt-5 mt-[35vh]" onclick="dismissMessage()">
+      <button type="submit">Dismiss message</button>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- Sign-up form end -->
+
+  <!-- Success message start -->
+
+
+
+
+
+
+
+  <!-- Success message end -->
+  <script>
+    let successMessage = document.getElementById('success');
+    let newsLetter = document.getElementById("Newsletter");
+    let notification = document.getElementById("notify");
+    function validateEmail() {
+      let Email = document.getElementById('email').value;
+      let errorMessage = document.getElementById("errorMessage");
+
+
+
+      const emailPattern = /^[a-z A-z 0-9._-]+@[a-z A-Z 0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (emailPattern.test(Email)) {
+        errorMessage.style.display = "none";
+        successMessage.style.display = "block";
+        notification.innerText = Email;
+        newsLetter.style.display = "none";
+
+      } else {
+        errorMessage.style.display = "block";
+        successMessage.style.display = "none";
+
+      }
+    }
+    function dismissMessage() {
+      successMessage.style.display = "none";
+      newsLetter.style.display = "flex";
+    }
+  </script>
+</body>
+
+</html>
